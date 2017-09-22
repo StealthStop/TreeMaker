@@ -136,7 +136,10 @@ def makeTreeFromMiniAOD(self,process):
                 1000001,1000002,1000003,1000004,1000005,1000006,
                 2000001,2000002,2000003,2000004,2000005,2000006,
                 4900023,4900101,4900111,4900211,
+                5000001,5000002
             ),
+           keepAllTheseIds = cms.vint32(6,23,24,25),
+           keepFirst = cms.bool(True)
         )
         self.VectorTLorentzVector.append("genParticles(GenParticles)")
         self.VectorInt.append("genParticles:PdgId(GenParticles_PdgId)")
