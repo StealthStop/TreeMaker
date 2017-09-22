@@ -56,8 +56,8 @@ GenParticlesProducer::GenParticlesProducer(const edm::ParameterSet& iConfig):
   const auto& pids = iConfig.getParameter<std::vector<int>>("parentIds");
   typicalParentIds.insert(pids.begin(),pids.end());
 
-  const auto& pids = iConfig.getParameter<std::vector<int>>("keepIds");
-  keepAllTheseIds.insert(pids.begin(),pids.end());
+  const auto& ids = iConfig.getParameter<std::vector<int>>("keepIds");
+  keepAllTheseIds.insert(ids.begin(),ids.end());
 
   keepFirstDecayProducts = iConfig.getParameter<bool>("keepFirst");
 
