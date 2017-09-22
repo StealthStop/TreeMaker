@@ -116,7 +116,7 @@ GenParticlesProducer::produce(edm::StreamID, edm::Event& iEvent, const edm::Even
       bool acceptableParent = typicalParent && (iPart->isLastCopy() || status==21);
       //bool acceptableChild = typicalChild && (status==1 || status==2 || (status>20 && status<30));
       bool acceptableChild = typicalChild && iPart->isLastCopy();
-      if (!(acceptableChild || acceptableParent || keepAllThese || firstDecayProdcuts)) continue;
+      if (!(acceptableChild || acceptableParent || keepAllThese || firstDecayProducts)) continue;
 
       TLorentzVector temp;
       temp.SetPxPyPzE(iPart->px(), iPart->py(), iPart->pz(), iPart->energy());
