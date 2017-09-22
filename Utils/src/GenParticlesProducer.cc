@@ -39,7 +39,8 @@ private:
   edm::InputTag genCollection;
   edm::EDGetTokenT<edm::View<reco::GenParticle>> genCollectionTok;
   bool        debug;
-  std::unordered_set<int> typicalChildIds, typicalParentIds;
+  std::unordered_set<int> typicalChildIds, typicalParentIds, keepAllTheseIds;
+  bool        keepFirstDecayProducts;
 
 };
 
@@ -54,6 +55,11 @@ GenParticlesProducer::GenParticlesProducer(const edm::ParameterSet& iConfig):
 
   const auto& pids = iConfig.getParameter<std::vector<int>>("parentIds");
   typicalParentIds.insert(pids.begin(),pids.end());
+
+  const auto& pids = iConfig.getParameter<std::vector<int>>("keepIds");
+  keepAllTheseIds.insert(pids.begin(),pids.end());
+
+  keepFirstDecayProducts = iConfig.getParameter<bool>("keepFirst");
 
   produces< std::vector< TLorentzVector > >(""); 
   produces< std::vector< int > >("PdgId");
@@ -98,15 +104,19 @@ GenParticlesProducer::produce(edm::StreamID, edm::Event& iEvent, const edm::Even
   }
   for(View<reco::GenParticle>::const_iterator iPart = genPartCands->begin(); iPart != genPartCands->end(); ++iPart)
     {
+      bool keepAllThese = (keepAllTheseIds.find(abs(iPart->pdgId()))!=keepAllTheseIds.end());
+      bool firstDecayProducts = false;
+      if (keepFirstDecayProducts) firstDecayProducts = (abs(iPart->status())==23);
+
       bool typicalChild=(typicalChildIds.find(abs(iPart->pdgId()))!=typicalChildIds.end());
       bool typicalParent=(typicalParentIds.find(abs(iPart->pdgId()))!=typicalParentIds.end());
-      if (!(typicalChild || typicalParent)) continue;
+      if (!(typicalChild || typicalParent || keepAllThese || firstDecayProducts)) continue;
 
       int status = abs(iPart->status());
       bool acceptableParent = typicalParent && (iPart->isLastCopy() || status==21);
       //bool acceptableChild = typicalChild && (status==1 || status==2 || (status>20 && status<30));
       bool acceptableChild = typicalChild && iPart->isLastCopy();
-      if (!(acceptableChild || acceptableParent)) continue;
+      if (!(acceptableChild || acceptableParent || keepAllThese || firstDecayProdcuts)) continue;
 
       TLorentzVector temp;
       temp.SetPxPyPzE(iPart->px(), iPart->py(), iPart->pz(), iPart->energy());
