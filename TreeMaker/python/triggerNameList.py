@@ -57,4 +57,6 @@ triggerNameList = cms.vstring(
 	'HLT_CaloJet500_NoJetID_v',
     'HLT_Ele115_CaloIdVT_GsfTrkIdT_v',
     'HLT_IsoTkMu24_v',
+        'HLT_PFHT450_SixPFJet40_PFBTagCSV_1p5_v',
+        'HLT_PFHT430_SixJet40_BTagCSV_p056_v',
 )
