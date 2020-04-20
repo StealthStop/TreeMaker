@@ -186,6 +186,9 @@ enum particle_type
     dm1=51,
     dm2=52,
     dm3=53,
+    //VLQ particles
+    zeta=9936661,
+    tprime=9936662,
 };
 
 // Referenced:
