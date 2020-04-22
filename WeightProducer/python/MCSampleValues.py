@@ -1018,6 +1018,9 @@ class MCSampleValuesHelper():
         "RPV_2t6j_mStop-1400_mN1-100" : {
             "CrossSection" : XSValues(XS_13TeV=0.000473),
         },
+        "VLQ_2t4b_mtp-1000_mzeta-5000" : {
+            "CrossSection" : XSValues(XS_13TeV=0.0397),
+        },
     }
 
     def __init__(self, extra_dicts=None):

@@ -316,4 +316,5 @@ Fall17samples = [
         MCSample('StealthSHH_2t4b_mStop-1300_mSo-100_TuneCP2_13TeV-madgraphMLM-pythia8', 'PU2017_12Apr2018_94X_mc2017_realistic_v14-v1', 'RunIIFall17MiniAODv2', 'Constant', 54441, False),
         MCSample('StealthSHH_2t4b_mStop-1350_mSo-100_TuneCP2_13TeV-madgraphMLM-pythia8', 'PU2017_12Apr2018_94X_mc2017_realistic_v14-v1', 'RunIIFall17MiniAODv2', 'Constant', 56586, False),
         MCSample('StealthSHH_2t4b_mStop-1400_mSo-100_TuneCP2_13TeV-madgraphMLM-pythia8', 'PU2017_12Apr2018_94X_mc2017_realistic_v14-v1', 'RunIIFall17MiniAODv2', 'Constant', 57143, False),
+        MCSample('VLQ_2t4b_mtp-1000_mzeta-5000_TuneCP5_13TeV-madgraphMLM-pythia8', 'RunIISummer17PrePremix-MCv2_correctPU_94X_mc2017_realistic_v9-v1', 'RunIIFall17MiniAODv2','Constant', 10000, False),
 ]
